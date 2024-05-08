@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://sdk.monnify.com/plugin/monnify.js"
+    ></script>
+    <script>
+      function payWithMonnify({
+        amount,
+        customerEmail,
+        customerName,
+        customerMobileNumber,
+        apiKey,
+        contractCode,
+        paymentMethods,
+      }) {
+        MonnifySDK.initialize({
+          amount,
+          currency: "NGN",
+          reference: "" + Math.floor(Math.random() * 1000000000 + 1),
+          customerName,
+          customerEmail,
+          customerMobileNumber,
+          apiKey: "MK_PROD_GFVLE0PZTQ",
+          contractCode: "100693167467",
+          paymentDescription: "Pay With Monnify",
+
+          paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
+          onComplete: function (response) {
+            //Implement what happens when transaction is completed.
+            console.log(response);
+          },
+          onClose: function (data) {
+            //Implement what should happen when the modal is closed here
+            console.log(data);
+          },
+        });
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
